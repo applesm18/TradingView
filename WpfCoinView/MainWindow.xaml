@@ -1,0 +1,297 @@
+﻿<Window x:Class="WpfCoinView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfCoinView"
+        xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="Jamiel Sheikh`s TradingView" 
+        WindowStyle="None"
+        Width="1920"
+        Height="1080"
+        SizeToContent="WidthAndHeight"
+        >
+
+    <Window.Style>
+        <Style TargetType="{x:Type Window}">
+            <Setter Property="FontFamily" Value="Verdana"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="FontWeight" Value="Normal"/>
+            <Setter Property="WindowStyle" Value="None"/>
+            <Setter Property="Background" Value="Black"/>
+
+        </Style>
+    </Window.Style>
+
+    <Grid Background="Black">
+
+        <Border Width="1920" Height="50" VerticalAlignment="Top">
+            <TextBlock HorizontalAlignment="Left" VerticalAlignment="Top" Name="Title" Height="40" Width="auto"  
+                 Text="Jamiel Sheikh`s TradingView" Foreground="White" Margin="20,0,0,0" FontSize="32" FontWeight="Heavy">
+            </TextBlock>
+        </Border>
+
+        <Border Width="1920" Height="50" VerticalAlignment="Top">
+            <Button HorizontalAlignment="Right" VerticalAlignment="Top" Name="Close" Height="50" Width="50"  
+               Foreground="White" Margin="0,0,0,0" FontSize="34" FontWeight="Heavy" Background="Black" Click="OnAppClose" BorderBrush="Transparent" >
+                <TextBlock Text="X">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <Trigger Property ="IsMouseOver" Value="True">
+                                    <Setter Property="Foreground" Value="#FF16699E" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="Green"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FF16699E" />
+                                <Setter Property="Background" Value="#FF16699E" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Border>
+        
+        <ListView Name="ListExchange" HorizontalAlignment="Center" VerticalAlignment="Top" Width="1920" Height="1030" Background="Black" RenderTransformOrigin="0.5,0.5" Margin="0,50,0,0" Grid.RowSpan="2">
+            <ListView.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform Y="-5"/>
+                </TransformGroup>
+            </ListView.RenderTransform>
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter Property="FontSize" Value="12" />
+                            <Setter Property="Foreground" Value="#FF7A099E" />
+                            <Setter Property="Background" Value="#FF16699E" />
+                        </Trigger>
+                    </Style.Triggers>
+                    <Setter Property="Foreground" Value="#FFFBFFFB" />
+                    <Setter Property="FontSize" Value="10" />
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.View>
+                <GridView>
+                    <GridView.ColumnHeaderContainerStyle>
+                        <Style>
+                            <Setter Property="TextElement.FontSize" Value="10" />
+                        </Style>
+                    </GridView.ColumnHeaderContainerStyle>
+
+                    <GridViewColumn Header="EXCHANGE" Width="73" DisplayMemberBinding="{Binding Path=EXNAME}"/>
+                    <GridViewColumn Header="BTC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B1}"/>
+                    <GridViewColumn Header="USDC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B2}"/>
+                    <GridViewColumn Header="BTC/USDC" Width="73" DisplayMemberBinding="{Binding Path=A2B3}"/>
+                    <GridViewColumn Header="ETH/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B4}"/>
+                    <GridViewColumn Header="ETH/USDC" Width="73" DisplayMemberBinding="{Binding Path=A2B5}"/>
+                    <GridViewColumn Header="CTC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B6}"/>
+                    <GridViewColumn Header="XRP/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B7}"/>
+                    <GridViewColumn Header="FON/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B8}"/>
+                    <GridViewColumn Header="MNT/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B9}"/>
+                    <GridViewColumn Header="FB/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B10}"/>
+                    <GridViewColumn Header="DOGE/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B11}"/>
+                    <GridViewColumn Header="WLD/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B12}"/>
+                    <GridViewColumn Header="SOL/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B13}"/>
+                    <GridViewColumn Header="XRP/USDC" Width="73" DisplayMemberBinding="{Binding Path=A2B14}"/>
+                    <GridViewColumn Header="LTC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B15}"/>
+                    <GridViewColumn Header="CYBER/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B16}"/>
+                    <GridViewColumn Header="PEPE/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B17}"/>
+                    <GridViewColumn Header="TOMI/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B18}"/>
+                    <GridViewColumn Header="LINK/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B19}"/>
+                    <GridViewColumn Header="TRX/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B20}"/>
+                    <GridViewColumn Header="ARB/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B21}"/>
+                    <GridViewColumn Header="GALA/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B22}"/>
+                    <GridViewColumn Header="BUSD/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B23}"/>
+                    <GridViewColumn Header="MTC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B24}"/>
+                    <GridViewColumn Header="MATIC/USDT" Width="73" DisplayMemberBinding="{Binding Path=A2B25}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webcoin"    />
+            </DockPanel>            
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webView"    Source="https://www.coingecko.com/en/exchanges"/>
+              
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange1"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange2"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange3"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange4"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange5"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange6"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange7"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange8"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange9"   Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+        <Border Width="100" Height="100" Margin="0, 0, 0,0" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.RowSpan="2" Visibility="Hidden" >
+            <DockPanel>
+                <DockPanel.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform X="-120"/>
+                    </TransformGroup>
+                </DockPanel.RenderTransform>
+                <wv2:WebView2 Name="webexchange10"  Source="https://www.coingecko.com/en/exchanges/bybit_spot" />
+            </DockPanel>
+        </Border>
+
+    </Grid>
+
+</Window>
